@@ -1,5 +1,5 @@
 # Student-Hallpass-Application (Foxtrot)
-DubsyDev & henrypickle
+DubsyDev & yunatunavo
 
 Flutter and Android Studio
 Language: Dart

@@ -5,11 +5,9 @@ import 'hallpass_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
   // text controller
   final _controller = TextEditingController();

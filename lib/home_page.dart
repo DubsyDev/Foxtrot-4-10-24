@@ -62,14 +62,25 @@ class _HomePageState extends State<HomePage> {
           child: const Icon(Icons.add,color: Colors.blueGrey,),
 
         ),
-        body: ListView.builder(
+        body: Column(
+          children: [
+            ListView.builder(
             itemCount: hallPassList.length,
             itemBuilder: (context, index) {
               return HallpassTile(
                 hallpassName: hallPassList[index][0],
               );
             },
+            
           ),
-        );
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Switch Theme'),
+              )
+          ],
+        )
+        
+        
+    );
   }
 }

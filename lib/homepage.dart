@@ -6,6 +6,7 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
 class _HomePageState extends State<HomePage> {
   final _controller = TextEditingController();
   final _controller2 = TextEditingController();
@@ -15,11 +16,13 @@ class _HomePageState extends State<HomePage> {
 
   void saveNewHallPass() {
     setState(() {
-      hallPassList.add(["Name: ${_controller.text} Destination:   ${_controller2.text} Time Left: "]);
-    }
-    );
+      hallPassList.add([
+        "Name: ${_controller.text} Destination:   ${_controller2.text} Time Left: "
+      ]);
+    });
     Navigator.of(context).pop();
   }
+
   void createNewHallPass() {
     showDialog(
       context: context,
@@ -40,44 +43,53 @@ class _HomePageState extends State<HomePage> {
     final time = TimeOfDay.now();
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 120, 
+          toolbarHeight: 120,
           elevation: 4,
-          leading: const Icon(size: 40,Icons.account_circle_rounded),
-          title: Text('Hall passes ${time.format(context)}  ${now.month}/${now.day}'),
+          leading: const Icon(size: 40, Icons.account_circle_rounded),
+          title: Text(
+              'Hall passes ${time.format(context)}  ${now.month}/${now.day}'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: createNewHallPass,
-          backgroundColor: Colors.black,
-          hoverColor: Colors.grey[600],
-          child: const Icon(Icons.add,color: Colors.blueGrey,),
+          backgroundColor: Color.fromARGB(90, 80, 80, 80),
+          hoverColor: Colors.blueGrey[600],
+          child: const Icon(
+            Icons.add,
+            color: Colors.blueGrey,
+          ),
         ),
         body: Column(
           children: [
-            ListView.builder(
-              itemCount: hallPassList.length,
-              itemBuilder: (context, index) {
-                return HallPassTile(hallpassName: hallPassList[index][0],);
-              },
+            Expanded(
+              child: SizedBox(
+                height: 200.0,
+                child: ListView.builder(
+                  itemCount: hallPassList.length,
+                  itemBuilder: (context, index) {
+                    return HallPassTile(
+                      hallpassName: hallPassList[index][0],
+                    );
+                  },
+                ),
+              ),
             ),
             ElevatedButton(
               onPressed: () {},
               child: const Text('Switch Theme'),
             )
           ],
-        )
-    );
+        ));
   }
 }
 
 class DialogBox extends StatelessWidget {
-
   // ignore: prefer_typing_uninitialized_variables
   final dynamic controller;
   final dynamic controller2;
-  VoidCallback onSave;
-  VoidCallback onCancel;
+  final VoidCallback onSave;
+  final VoidCallback onCancel;
 
-  DialogBox({
+  const DialogBox({
     super.key,
     required this.controller,
     required this.controller2,
@@ -90,11 +102,9 @@ class DialogBox extends StatelessWidget {
     return AlertDialog(
       content: SizedBox(
         height: 240,
-        child:
-        Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
             // user input
             const Text("Send a Student"),
             TextField(
@@ -106,11 +116,11 @@ class DialogBox extends StatelessWidget {
             ),
 
             TextField(
-                controller: controller2,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Enter a destination",
-                ),
+              controller: controller2,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Enter a destination",
+              ),
             ),
 
             // save, cancel
@@ -131,6 +141,7 @@ class DialogBox extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class MyButton extends StatelessWidget {
   final String text;
   VoidCallback onPressed;

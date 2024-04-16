@@ -11,7 +11,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.black54,
+        buttonTheme: const ButtonThemeData(buttonColor: Colors.grey),
+          appBarTheme: const AppBarTheme(
+          toolbarTextStyle: TextStyle(fontSize: 30, ),
+          backgroundColor: Colors.orangeAccent,
+          toolbarHeight: 30
+        ),
+      ),
+
       home: const HomePage(),
     );
   }

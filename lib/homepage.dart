@@ -42,48 +42,50 @@ class _HomePageState extends State<HomePage> {
     final now = DateTime.now();
     final time = TimeOfDay.now();
     return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 120,
-          elevation: 4,
-          leading: const Icon(size: 40, Icons.account_circle_rounded),
-          title: Text(
-              'Hall passes ${time.format(context)}  ${now.month}/${now.day}'),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        toolbarHeight: 120,
+        elevation: 4,
+        leading: const Icon(size: 40, Icons.account_circle_rounded),
+        title: const Text('Dashboard'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNewHallPass,
+        backgroundColor: Theme.of(context).buttonTheme.colorScheme?.background,
+        hoverColor: Colors.blueGrey[600],
+        child: const Icon(
+          Icons.add,
+          color: Colors.blueGrey,
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: createNewHallPass,
-          backgroundColor: Color.fromARGB(90, 80, 80, 80),
-          hoverColor: Colors.blueGrey[600],
-          child: const Icon(
-            Icons.add,
-            color: Colors.blueGrey,
+      ),
+      body: Column(
+        children: [
+          Image.asset(
+            'assets/dark.png',
+            height: double.minPositive,
+            fit: BoxFit.cover,
           ),
-        ),
-        body: Column(
-          children: [
-            Image.asset(
-              'assets/dark.png',
-              height: double.minPositive,
-              fit: BoxFit.cover,
-            ),
-            Expanded(
-              child: SizedBox(
-                height: 200.0,
-                child: ListView.builder(
-                  itemCount: hallPassList.length,
-                  itemBuilder: (context, index) {
-                    return HallPassTile(
-                      hallpassName: hallPassList[index][0],
-                    );
-                  },
-                ),
+          Expanded(
+            child: SizedBox(
+              height: 200.0,
+              child: ListView.builder(
+                itemCount: hallPassList.length,
+                itemBuilder: (context, index) {
+                  return HallPassTile(
+                    hallpassName: hallPassList[index][0],
+                  );
+                },
               ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Switch Theme'),
-            )
-          ],
-        ));
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Switch Theme'),
+          )
+        ],
+      ),
+    );
   }
 }
 

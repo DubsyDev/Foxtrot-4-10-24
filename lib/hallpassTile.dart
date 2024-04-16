@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HallPassTile extends StatelessWidget {
   final String hallpassName;
 
-  HallPassTile({
+  const HallPassTile({
     super.key,
     required this.hallpassName,
   });

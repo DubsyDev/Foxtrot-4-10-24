@@ -1,10 +1,10 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
-class HallpassTile extends StatelessWidget {
+class HallPassTile extends StatelessWidget {
   final String hallpassName;
-  
 
-  HallpassTile({
+
+  HallPassTile({
     super.key,
     required this.hallpassName,
   });
@@ -25,9 +25,9 @@ class HallpassTile extends StatelessWidget {
           children: [
             //Destination
             Text(style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0,
-            color: Colors.orangeAccent,), hallpassName),
+              color: Colors.orangeAccent,), hallpassName),
             Text(style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0,
-            color: Colors.orangeAccent,),'${time.format(context)}  ${now.month}/${now.day}/${now.year}'),
+              color: Colors.orangeAccent,),'${time.format(context)}  ${now.month}/${now.day}/${now.year}'),
           ],
         ),
       ),

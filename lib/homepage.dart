@@ -60,6 +60,11 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: [
+            Image.asset(
+              'assets/dark.png',
+              height: double.minPositive,
+              fit: BoxFit.cover,
+            ),
             Expanded(
               child: SizedBox(
                 height: 200.0,

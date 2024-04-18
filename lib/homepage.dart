@@ -23,20 +23,6 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).pop();
   }
 
-  void createNewHallPass() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return DialogBox(
-          controller: _controller,
-          controller2: _controller2,
-          onSave: saveNewHallPass,
-          onCancel: () => Navigator.of(context).pop(),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
@@ -45,21 +31,12 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        toolbarHeight: 120,
+        toolbarHeight: 80,
         elevation: 4,
         leading: const Icon(size: 40, Icons.account_circle_rounded),
-        title: const Text('Dashboard'),
+        title: const Text('Dashboard',style: TextStyle(fontWeight: FontWeight.bold),),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: createNewHallPass,
-        backgroundColor: Theme.of(context).buttonTheme.colorScheme?.background,
-        hoverColor: Colors.blueGrey[600],
-        child: const Icon(
-          Icons.add,
-          color: Colors.blueGrey,
-        ),
-      ),
-      body: Column(
+      body: Row(
         children: [
           Image.asset(
             'assets/dark.png',
@@ -82,71 +59,14 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () {},
             child: const Text('Switch Theme'),
-          )
+          ),
         ],
       ),
     );
   }
+
 }
 
-class DialogBox extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final dynamic controller;
-  final dynamic controller2;
-  final VoidCallback onSave;
-  final VoidCallback onCancel;
-
-  const DialogBox({
-    super.key,
-    required this.controller,
-    required this.controller2,
-    required this.onSave,
-    required this.onCancel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      content: SizedBox(
-        height: 240,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            // user input
-            const Text("Send a Student"),
-            TextField(
-              controller: controller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Student Name",
-              ),
-            ),
-
-            TextField(
-              controller: controller2,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Enter a destination",
-              ),
-            ),
-
-            // save, cancel
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // Confirm
-                MyButton(text: "Send!", onPressed: onSave),
-                const SizedBox(width: 10),
-                // Cancel
-                MyButton(text: "Cancel", onPressed: onCancel),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 // ignore: must_be_immutable
 class MyButton extends StatelessWidget {

@@ -9,6 +9,15 @@ enum PageType{
 PageType page = PageType.home;
 
 void main(){
-  runApp(page == PageType.home ? HomePage() : /*(page == PageType.settings)?*/ const SettingsPage() );
+  runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: page == PageType.home ? const HomePage() : /*(page == PageType.settings)?*/ const SettingsPage(),
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.grey,
+          ),
+
+    )
+  );
 }
 

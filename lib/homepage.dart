@@ -1,13 +1,25 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-  Text appBarTitle = const Text('Dashboard', style: );
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final Text appBarTitle = const Text('Dashboard');
+
+  void changePage(PageType newPage){
+    setState(() {
+      page = newPage;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +27,14 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: appBarTitle,
         centerTitle: true,
-        titleTextStyle: ,
+        actions: [
+          GestureDetector(
+              onTap: (){
+                changePage(PageType.settings);
+              },
+              child: const Icon(Icons.change_circle))
+        ],
       ) ,
-      body: ,
     );
   }
 }

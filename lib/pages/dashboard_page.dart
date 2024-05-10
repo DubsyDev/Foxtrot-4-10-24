@@ -2,8 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'main.dart';
+import '../main.dart';
 
 // First get the FlutterView.
 FlutterView view = WidgetsBinding.instance.platformDispatcher.views.first;
@@ -21,14 +20,14 @@ double height = size.height;
 */
 
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class DashboardPage extends StatefulWidget {
+  const DashboardPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DashboardPage> createState() => _DashboardPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DashboardPageState extends State<DashboardPage> {
   final Text appBarTitle = const Text('Dashboard');
 
 
@@ -50,6 +49,15 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
+        actions: [
+          ElevatedButton(onPressed: (){Navigator.pushNamed(context,'input-page');},
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(Colors.black),
+              padding: MaterialStatePropertyAll(EdgeInsets.all(3)),
+            ),
+            child: const Icon(CupertinoIcons.plus,color: Colors.white,),
+          )
+        ],
       ) ,
       body: SafeArea(
         child: Row(

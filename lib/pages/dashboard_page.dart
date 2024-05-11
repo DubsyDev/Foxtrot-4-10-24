@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:foxtrot/assets/hallpass_input_card.dart';
 import '../main.dart';
 
 // First get the FlutterView.
@@ -49,22 +49,14 @@ class _DashboardPageState extends State<DashboardPage> {
             );
           },
         ),
-        actions: [
-          ElevatedButton(onPressed: (){Navigator.pushNamed(context,'input-page');},
-            style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.black),
-              padding: MaterialStatePropertyAll(EdgeInsets.all(3)),
-            ),
-            child: const Icon(CupertinoIcons.plus,color: Colors.white,),
-          )
-        ],
+        actions: const [],
       ) ,
       body: SafeArea(
         child: Row(
           children: [
             Expanded(
               child: Container(
-                margin: const EdgeInsets.all(5),
+                margin: const EdgeInsets.all(2),
                 color: Theme.of(context).scaffoldBackgroundColor,
                 child: ListView.builder(
                   itemCount: hallpassList.length,
@@ -74,11 +66,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
               ),
             ),
-            const Expanded(
-              child: Column(
-
-              )
-            )
+            HallpassInputCard()
           ],
         ),
       ),

@@ -1,6 +1,11 @@
 
 import 'package:flutter/material.dart';
 
+
+
+
+
+
 const TextTheme hallpassTextTheme = TextTheme(
     bodyMedium: TextStyle(
       color: Colors.white54,
@@ -18,18 +23,20 @@ const TextTheme hallpassTextTheme = TextTheme(
 
 
 
-class Hallpass extends StatefulWidget {
-  late String _student;
-  late String _origin;
-  late String _destination;
-  late String _teacher;
-  Hallpass({super.key});
+class Hallpass extends StatelessWidget {
+  Hallpass({
+    super.key,
+    required this.student,
+    required this.origin,
+    required this.destination,
+  });
 
-  @override
-  State<Hallpass> createState() => _HallpassState();
-}
+  String student;
+  String origin;
+  String destination;
+  DateTime startTime = DateTime.now();
+  DateTime endTime = DateTime.now().add(const Duration(minutes: 10));
 
-class _HallpassState extends State<Hallpass> {
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +47,12 @@ class _HallpassState extends State<Hallpass> {
       child: Column(
         children: [
           ListTile(
-            title: Text('Voss ==> B132', style: hallpassTextTheme.titleMedium),
+            title: Text('$student  =>  $origin', style: hallpassTextTheme.titleMedium),
+            trailing: Text(
+              '${startTime.hour}:${startTime.minute} - ${endTime.hour}:${endTime.minute}',
+              style: hallpassTextTheme.bodyMedium,
+            )
           ),
-          ListTile(
-            leading: Text('Mandish ==> Blackburn',style: hallpassTextTheme.bodySmall,),
-            trailing: Text('8:45 - 8:55', style: hallpassTextTheme.bodySmall,)
-          )
         ],
       )
 

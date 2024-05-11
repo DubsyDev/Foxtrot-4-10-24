@@ -7,7 +7,7 @@ ThemeData kThemeData = ThemeData(
   ),
   scaffoldBackgroundColor: Colors.black,
   cardTheme: const CardTheme(
-    color: Color.fromARGB(90, 100, 50, 0),
+    color: Color.fromARGB(100, 66, 66, 66),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
     margin: EdgeInsets.all(5),
   ),
